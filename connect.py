@@ -6,19 +6,46 @@ Created on Wed Apr  8 17:04:22 2020
 """
 
 import requests
+import json
 
-url = "https://api.bigcommerce.com/stores/gaywsgumtw/v3/catalog/products?include=variants%2Ccustom_fields"
+"""GETTING"""
 
-payload = {}
-headers = {
-    'x-auth-client': "eptlgcc4vesdj5jp2as53w2gm6iyg7z",
-    'x-auth-token': "9ksoui1m1rfkhvdm40zxv4ov605o1cc"
-    }
+# i = 1 # first page of products
+# limit = 250 #upper bound, any reason to decrease?
 
-response = requests.request("GET", url, headers=headers, data = payload)
+# url = "https://api.bigcommerce.com/stores/gaywsgumtw/v3/catalog/" \
+#     + "products?include=variants%2Ccustom_fields" \
+#     + f"&page={i}&limit={limit}" # formatted from i and limit
 
-print(response.text.encode('utf8'))
+# headers = {
+#     'x-auth-client': "eptlgcc4vesdj5jp2as53w2gm6iyg7z",
+#     'x-auth-token': "9ksoui1m1rfkhvdm40zxv4ov605o1cc"
+#     } # access tokens
 
+# res = requests.get(url, headers=headers) # actual API call
+# data = json.loads(res.content) # rendering json object notation
+# products = data['data'] # list of dicts
+
+# n = data['meta']['pagination']['total_pages'] # number of calls for all
+
+# while i < n:
+#     i += 1
+#     url = "https://api.bigcommerce.com/stores/gaywsgumtw/v3/catalog/" \
+#     + "products?include=variants%2Ccustom_fields" \
+#     + f"&page={i}&limit={limit}" # formatted from i and limit
+#     res = requests.get(url, headers=headers) # actual API call
+#     data = json.loads(res.content) # rendering json object notation
+#     products.extend(data['data'])
+
+"""PICKLING"""
+
+# with open('products','w') as out:
+#     json.dump(products)
+
+"""READING"""
+
+with open('products') as fin:
+    products = json.load(fin)
 
 
 
