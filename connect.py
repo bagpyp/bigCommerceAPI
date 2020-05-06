@@ -8,6 +8,7 @@ Created on Wed Apr  8 17:04:22 2020
 import requests
 import json
 
+
 """GETTING"""
 
 # i = 1 # first page of products
